@@ -2,6 +2,11 @@
 
 public class Car: Entity
 {
+    public string Brand { get; set;}
+    public string Model { get; set;}
+    public DateTime Date { get; set; }
+    private readonly List<CarSpecification> _specifications = new List<CarSpecification>();
+    public IReadOnlyCollection<CarSpecification> Specifications => _specifications.AsReadOnly();
     private Car()
     {
         
@@ -18,7 +23,9 @@ public class Car: Entity
             throw new ArgumentException("Incorrect date!");
         }
     }
-    public string Brand { get; set;}
-    public string Model { get; set;}
-    public DateTime Date { get; set; }
+    public void AddSpecification(string detail, string value)
+    {
+        var specification = new CarSpecification(detail, value);
+        _specifications.Add(specification);
+    }
 }

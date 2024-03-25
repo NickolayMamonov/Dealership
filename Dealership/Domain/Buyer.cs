@@ -18,5 +18,6 @@ public class Buyer: Entity
         FullName = fullName ?? throw new ArgumentNullException(nameof(fullName));
         _purchases = new List<Purchase>();
     }
+    
  
 }
